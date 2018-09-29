@@ -277,6 +277,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/排序算法-选择排序、快速排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chris H. T.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Truth">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/29/排序算法-选择排序、快速排序/" itemprop="url">
+                  排序算法-选择排序、快速排序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-29 20:22:42" itemprop="dateCreated datePublished" datetime="2018-09-29T20:22:42+08:00">2018-09-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-30 02:47:03" itemprop="dateModified" datetime="2018-09-30T02:47:03+08:00">2018-09-30</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>选择排序是一种简单直观的排序算法。他它需要两层循环，外层循环遍历数组游标，内层循环则从待排序的元素中选取最小的一个，放在数组起始位置。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">时间复杂度（平均）</th>
+<th style="text-align:center">时间复杂度（最好）</th>
+<th style="text-align:center">时间复杂度（最坏）</th>
+<th style="text-align:center">空间复杂度</th>
+<th style="text-align:center">稳定性</th>
+<th style="text-align:center">复杂性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">O(n<sup>2</sup>)</td>
+<td style="text-align:center">O(n<sup>2</sup>)</td>
+<td style="text-align:center">O(n<sup>2</sup>)</td>
+<td style="text-align:center">O(1)</td>
+<td style="text-align:center">不稳定</td>
+<td style="text-align:center">简单</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">swap</span> (<span class="params">a, b, arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> temp = arr[a];</span><br><span class="line">  arr[a] = arr[b];</span><br><span class="line">  arr[b] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> len = arr.length;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">    min = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (arr[i] &gt; arr[j]) min = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (min !== i) swap(i, min, arr);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em>不稳定性</em></strong>：选择排序交换的值并不一定是相邻的，因此有可能打破原来数组中相同元素的位置顺序。</p>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>快速排序由C. A. R. Hoare在1962年提出。它的原理是首先把原始数组分为两个子数组，其中一个子数组的元素比另一个子数组的都小。然后再对子数组进行拆分，重复操作。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">时间复杂度（平均）</th>
+<th style="text-align:center">时间复杂度（最好）</th>
+<th style="text-align:center">时间复杂度（最坏）</th>
+<th style="text-align:center">空间复杂度</th>
+<th style="text-align:center">稳定性</th>
+<th style="text-align:center">复杂性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">O(nlog<sub>2</sub>n)</td>
+<td style="text-align:center">O(nlog<sub>2</sub>n)</td>
+<td style="text-align:center">O(n<sup>2</sup>)</td>
+<td style="text-align:center">O(nlog<sub>2</sub>n)</td>
+<td style="text-align:center">不稳定</td>
+<td style="text-align:center">较复杂</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quickSort</span> (<span class="params">arr, _left, _right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> left = <span class="keyword">typeof</span> _left === <span class="string">'number'</span> ? _left : <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> right = <span class="keyword">typeof</span> _right === <span class="string">'number'</span> ? _right : arr.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> (left &lt; right) &#123;</span><br><span class="line">    <span class="keyword">const</span> partitionIndex = partition(arr, left, right);</span><br><span class="line">    quickSort(arr, left, partitionIndex - <span class="number">1</span>);</span><br><span class="line">    quickSort(arr, partitionIndex + <span class="number">1</span>, right);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">partition</span> (<span class="params">arr, left, right</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = left + <span class="number">1</span>, j = left; i &lt;= right; i++) &#123;</span><br><span class="line">    arr[i] &lt; arr[left] &amp;&amp; swap(i, ++j, arr);</span><br><span class="line">  &#125;</span><br><span class="line">  swap(left, j, arr);</span><br><span class="line">  <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/29/排序算法-冒泡排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -469,7 +669,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
